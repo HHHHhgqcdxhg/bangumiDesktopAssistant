@@ -1,0 +1,161 @@
+[
+    {
+        "title": "刀剑神域武器恶趣味请问请问请问请问驱蚊器委屈委屈恶气",
+        "updateType": "weekly",
+        "updateTime": "14:54",
+        "updateDay": 6,
+        "headImgSrc": "sao.jpg",
+        "startDate": "2018-06-19",
+        "startChapter":0,
+        "finishDate": "2018-11-14",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md130412"
+        },
+        "follow": 1
+    },
+    {
+        "title": "关于我转生变成史莱姆这档事",
+        "updateType": "weekly",
+        "updateTime": "00:30",
+        "updateDay": 1,
+        "headImgSrc": "slm.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-11-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md130412",
+            "iqiyi": "http://www.iqiyi.com/a_19rrh707nd.html",
+            "qq": "http://v.qq.com/detail/3/3qpalo6ldy0i4bf.html",
+            "mgtv": "http://v.qq.com/detail/3/3qpalo6ldy0i4bf.html",
+            "migudm": "http://v.qq.com/detail/3/3qpalo6ldy0i4bf.html"
+        },
+        "follow": 1
+    },
+    {
+        "title": "Anima Yell!",
+        "updateType": "weekly",
+        "updateTime": "00:00",
+        "updateDay": 0,
+        "headImgSrc": "animeyell.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md139392"
+        },
+        "follow": 1
+    },
+    {
+        "title": "付丧神出租中",
+        "updateType": "weekly",
+        "updateTime": "01:10",
+        "updateDay": 0,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "宇宙战舰提拉米斯II",
+        "updateType": "weekly",
+        "updateTime": "01:00",
+        "updateDay": 1,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "偶像大师 SideM Mini",
+        "updateType": "weekly",
+        "updateTime": "21:54",
+        "updateDay": 1,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "中间管理录利根川",
+        "updateType": "weekly",
+        "updateTime": "04:30",
+        "updateDay": 2,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "青春猪头少年不会梦到兔女郎学姐",
+        "updateType": "weekly",
+        "updateTime": "02:50",
+        "updateDay": 3,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "邻家索菲",
+        "updateType": "weekly",
+        "updateTime": "21:00",
+        "updateDay": 4,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "终将成为你",
+        "updateType": "weekly",
+        "updateTime": "22:00",
+        "updateDay": 4,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    },
+    {
+        "title": "我家女仆有够烦！",
+        "updateType": "weekly",
+        "updateTime": "23:30",
+        "updateDay": 4,
+        "headImgSrc": "fssczz.jpg",
+        "startDate": "2018-06-24",
+        "finishDate": "2018-12-24",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md102712"
+        },
+        "follow": 1
+    }
+]

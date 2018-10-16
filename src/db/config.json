@@ -1,0 +1,23 @@
+{
+    "mainWindowWid": 300,
+    "mainWindowHei": 700,
+    "mainWindowFocusedOpacity": 1,
+    "mainWindowUnfocusedOpacity":0.6,
+    "elFocusedOpacity":1,
+    "elUnfocusedOpacity":0.6,
+    "colors": {
+        "contentBg": "rgba(0,0,0,0)",
+        "contentHolderBg":"rgba(255,255,255,0.01)",
+        "topBg": "#ffff00",
+        "titleBg": "#ccffcc",
+        "updateTimeBg": "#ccff00",
+        "bangumiContentBg": "#ffcccc",
+        "bangumiHeadImgBorder": "#ffcccc",
+
+        "timeNowText":"#000000",
+        "bangumiTime":"#ff5aa8",
+        "dotBeforBangumiTime":"#ff5aa8",
+        "bangumiTitle":"#000",
+        "bangumiChapter":"#ff5aa8"
+    }
+}
