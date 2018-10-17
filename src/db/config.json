@@ -6,7 +6,8 @@
     "elFocusedOpacity":1,
     "elUnfocusedOpacity":0.6,
     "colors": {
-        "contentBg": "rgba(0,0,0,0)",
+        "contentBg": "rgba(0,255,0,0)",
+        "contentDisplayBg":"rgba(0,0,255,0.01)",
         "contentHolderBg":"rgba(255,255,255,0.01)",
         "topBg": "#ffff00",
         "titleBg": "#ccffcc",

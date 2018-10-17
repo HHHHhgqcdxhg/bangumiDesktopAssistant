@@ -14,10 +14,10 @@ class ScheduleList(QListWidget):
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
         self.initListContent()
         self.itemClicked.connect(self.myClickItem)
-
+        self.myCurrentItem = None
     def myClickItem(self, item):
-        print(item.data)
         self.superEl.superEl.rightColumn.bangumiGeneralConfig.setData(item.data)
+        self.myCurrentItem = item
 
 
     def initListContent(self):

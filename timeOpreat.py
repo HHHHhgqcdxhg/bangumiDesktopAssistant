@@ -55,6 +55,7 @@ def getNextMonthDay(now,monthDay):
 timeZero = datetime.timedelta(days=0)
 time1Days = datetime.timedelta(days=1)
 time7Days = datetime.timedelta(days=7)
+time14Days = datetime.timedelta(days=14)
 time30Days = datetime.timedelta(days=30)
 
 def weekDay2Str(weekday):
@@ -75,5 +76,4 @@ def weekDay2Str(weekday):
 
 
 if __name__ == '__main__':
-    pass
-    # print(getNextWeekDay(datetime.datetime.now(),1))
+    weekDay2Str()

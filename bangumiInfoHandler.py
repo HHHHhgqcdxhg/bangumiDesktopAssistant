@@ -1,26 +1,37 @@
-import datetime, json
-
+import datetime, json, os
 
 class BangumuInfo():
-    def __init__(self, info: dict, updateTime: datetime.datetime):
-
-
+    def __init__(self, info: dict,chapterId, updateTime: datetime.datetime):
         self.title = info["title"]
-        self.chapter = f"第{1}话"
+        self.chapter = f"第{chapterId}话"
         self.imgSrc = info["headImgSrc"]
         self.url = info["platFormTargetUrls"][info["platFormTargetUrls"]["default"]]
         self.platformsInfo = info["platFormTargetUrls"]
         self.updateTime = updateTime
 
     @staticmethod
-    def factory():
-        with open("src/db/bangumiInfo.json", "r", encoding="utf8") as f:
-            bangumiInfoList = json.load(f)
+    def factory()->list:
+        bangumiData = []
         bangumiChapters = []
-        for bangumiInfo in bangumiInfoList:
-            updateTimes = BangumuInfo.getUpdateTimes(bangumiInfo["startDate"], bangumiInfo["finishDate"], bangumiInfo["updateTime"], bangumiInfo["updateType"])
-            for updateTime in updateTimes:
-                bangumiChapters.append(BangumuInfo(bangumiInfo,updateTime))
+        dbPath = "bangumiInfoEditor/db/bangumisInfo"
+        bangumiJsons = os.listdir(dbPath)
+        for bangumiJsonFileName in bangumiJsons:
+            print(f"{dbPath}/{bangumiJsonFileName}")
+            with open(f"{dbPath}/{bangumiJsonFileName}", "r", encoding="utf8") as f:
+                bangumiData.append(json.load(f))
+        for perBangumiData in bangumiData:
+            chapterId = perBangumiData["startChapter"]
+            for perChapter in perBangumiData["chapters"]:
+
+                bangumiChapters.append(BangumuInfo(perBangumiData,chapterId, datetime.datetime.strptime(perChapter["updateTime"], "%Y-%m-%d %H:%M:%S")))
+                chapterId += 1
+        # with open("bangumiInfoEditor/db/bangumisInfo/.json", "r", encoding="utf8") as f:
+        #     bangumiInfoList = json.load(f)
+        # bangumiChapters = []
+        # for bangumiInfo in bangumiInfoList:
+        #     updateTimes = BangumuInfo.getUpdateTimes(bangumiInfo["startDate"], bangumiInfo["finishDate"], bangumiInfo["updateTime"], bangumiInfo["updateType"])
+        #     for updateTime in updateTimes:
+        #         bangumiChapters.append(BangumuInfo(bangumiInfo,updateTime))
         # for x in bangumiChapters:
         #     print(x)
         # print(bangumiChapters.__len__())

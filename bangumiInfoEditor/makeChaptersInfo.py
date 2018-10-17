@@ -1,6 +1,6 @@
 import datetime,json,time
 from PIL import Image
-
+from PyQt5.QtWidgets import QMessageBox
 class PerChapterInfo:
     def __init__(self, bangumiTitle, updateTime: datetime.datetime, chapterId,headImg:str, chapterName="", title=""):
         self.bangumiTitle = bangumiTitle
@@ -31,10 +31,18 @@ class PerChapterInfo:
 
 class BangumiChapters:
     def __init__(self, info):
-        self.info = info
+        if info["title"] == "新添番剧":
+            raise Exception("noTitle")
         self.title = info["title"]
 
-        img = Image.open(info["headImgSrc"])
+
+        try:
+            if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
+                info["headImgSrc"] = f"../src/img/bangumiheadimg/{info['headImgSrc']}"
+
+            img = Image.open(info["headImgSrc"])
+        except:
+            raise Exception("noImage")
         img = img.convert("RGB")
         img = img.resize((64, 64),Image.ANTIALIAS)
         imgFileName = f"{int(time.time())}.jpg"
@@ -60,7 +68,10 @@ class BangumiChapters:
         self.finalUpdateDateTime = datetime.datetime.strptime(f"{self.finishDate} {self.updateTime}:00",
                                                               "%Y-%m-%d %H:%M:%S")
         self.chapters = []
+
         self.makeChapters()
+
+        self.info = info
 
     def makeChapters(self):
         self.chapters = []
@@ -95,3 +106,12 @@ class BangumiChapters:
                 perchapterInfo = PerChapterInfo(bangumiTitle=self.title, updateTime=updateDateTime, chapterId=chapterId,
                                                 chapterName=f"第{chapterId}话",headImg=self.headImgSrc, title="")
                 self.chapters.append(perchapterInfo)
+
+    def getChaptersStrs(self):
+        self.chaptersStrs = [str(x) for x in self.chapters]
+        return self.chaptersStrs
+
+    def makeDict(self):
+        retDict = self.__dict__
+        retDict["chapters"] = [chapter.__dict__ for chapter in self.chapters]
+        return retDict

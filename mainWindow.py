@@ -22,12 +22,22 @@ class MainWindow(QWidget):
         self.qTimer = QTimer(self)
         self.qTimer.timeout.connect(self.timer)
         self.qTimer.start(1000)
+        self.nextLeaveTask = -1
+        self.entered = False
 
     def timer(self):
         self.now = datetime.datetime.now()
         self.timeNowLabel.setText(self.now.strftime("%H:%M:%S"))
         if not(self.now.hour or self.now.minute or self.now.second):
-            self.timeTodayLabel.reSetText()
+            self.timeTodayLabel.setTimeText()
+        if not self.entered:
+            if self.nextLeaveTask > 0:
+                self.nextLeaveTask -= 1
+            elif self.nextLeaveTask == 0:
+                self.nextLeaveTask -= 1
+                self.setWindowOpacity(config.mainWindowUnfocusedOpacity)
+                self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
+                self.contentHolder.disActive()
 
     def initUI(self):
         # 设置大小
@@ -37,7 +47,7 @@ class MainWindow(QWidget):
         # 去除边框,从任务栏隐藏,窗口置顶
         self.setWindowFlags(Qt.FramelessWindowHint|Qt.SplashScreen|Qt.WindowStaysOnTopHint)
         # 窗口透明度
-        # self.setWindowOpacity(config.mainWindowUnfocusedOpacity)
+        self.setWindowOpacity(config.mainWindowUnfocusedOpacity)
         # 窗口颜色
         # self.setStyleSheet("background-color: rgba(255,255,0,1)")
         self.initLayout()
@@ -53,7 +63,7 @@ class MainWindow(QWidget):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
 
-        self.contentHolder = ContentHolder()
+        self.contentHolder = ContentHolder(self)
         self.mainLayout.addWidget(self.contentHolder)
 
 
@@ -63,11 +73,18 @@ class MainWindow(QWidget):
         self.setLayout(self.mainLayout)
 
 
-    # def leaveEvent(self, QEvent):
-    #     self.setWindowOpacity(config.mainWindowUnfocusedOpacity)
+    def leaveEvent(self, QEvent):
+        self.entered = False
+        self.nextLeaveTask = 1
+        self.needSetScrollBarValue = self.contentHolder.content.nextIndex
 
+    def enterEvent(self, QEvent):
+        self.entered = True
+        self.setWindowOpacity(config.mainWindowFocusedOpacity)
+        self.contentHolder.active()
     # def enterEvent(self, QEvent):
-    #     self.setWindowOpacity(config.mainWindowFocusedOpacity)
+    #
+    # def leaveEvent(self, QEvent):
 
 if __name__ == '__main__':
     mainWindow=MainWindow()

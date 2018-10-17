@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 import datetime
 import webbrowser
-from timeOpreat import time1Days,weekDay2Str
+from timeOpreat import time1Days,weekDay2Str,time7Days,timeZero,time14Days
 
 
 class PerBangumi(QFrame):
@@ -32,14 +32,22 @@ class PerBangumiTimeFrame(QFrame):
         self.mainLayout = QHBoxLayout()
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.addWidget(PerBangumiTimeDotLabel())
-
-        if updateTime - datetime.datetime.now() <= time1Days:
+        now = datetime.datetime.now()
+        thisWeekLastDays = datetime.timedelta(days=6 - now.weekday())
+        if updateTime.date() == now.date():
             updateTimeText = f"今天\n{updateTime.strftime('%H:%M')}"
-        else:
+        elif updateTime.date() == now.date() + time1Days:
+            updateTimeText = f"明天\n{updateTime.strftime('%H:%M')}"
+        elif timeZero <= updateTime.date() - now.date() <= thisWeekLastDays:
             updateTimeDay = updateTime.weekday()
             updateTimeWeekDay = weekDay2Str(updateTimeDay)
             updateTimeText = f"{updateTimeWeekDay}\n{updateTime.strftime('%H:%M')}"
-
+        elif thisWeekLastDays <= updateTime.date() - now.date() <= time7Days + thisWeekLastDays:
+            updateTimeDay = updateTime.weekday()
+            updateTimeWeekDay = weekDay2Str(updateTimeDay)
+            updateTimeText = f"下{updateTimeWeekDay}\n{updateTime.strftime('%H:%M')}"
+        else:
+            updateTimeText = f"{updateTime.strftime('%m-%d')}\n{updateTime.strftime('%H:%M')}"
         self.mainLayout.addWidget(PerBangumiTimeLabel(updateTimeText))
         self.setLayout(self.mainLayout)
         # self.setStyleSheet("background-color:green;")

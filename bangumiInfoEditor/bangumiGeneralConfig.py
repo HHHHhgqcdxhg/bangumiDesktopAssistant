@@ -139,7 +139,10 @@ class BangumiGeneralConfig(QFrame):
     def setData(self,data):
         if self.platformsEditor.platformSelector.myCurrentItem:
             self.data["platFormTargetUrls"][self.platformsEditor.platformSelector.myCurrentItem.key] = self.platformsEditor.urlEditor.toPlainText()
-        self.data = data
+        if not type(data) == dict:
+            self.data = data = data.__dict__
+        else:
+            self.data = data
         if data:
             self.mainTitleEditor.setText(data["title"])
             if data["headImgSrc"]:
@@ -151,7 +154,10 @@ class BangumiGeneralConfig(QFrame):
             self.dayTimeEditor.setText(data["updateTime"])
             self.firstUpdateChapterEditor.setText(str(data["startChapter"]))
             if data["updateType"] == "weekly":
-                self.updateDayEditor.setText(weekDay2Str(data["updateDay"]))
+                if str(data["updateDay"]) in "01234567":
+                    self.updateDayEditor.setText(weekDay2Str(int(data["updateDay"])))
+                else:
+                    self.updateDayEditor.setText(str(data["updateDay"]))
             else:
                 self.updateDayEditor.setText(str(data["updateDay"]))
 

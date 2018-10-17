@@ -36,7 +36,7 @@ class TimeTodayLabel(QLabel):
         self.setStyleSheet(f"background-color: {config.colors.topBg}")
 
     def setBgDisvisiable(self):
-        self.setStyleSheet("background-color: rgba(0,255,0,0)")
+        self.setStyleSheet("background-color: rgba(0,255,0,0.01)")
 
     def mousePressEvent(self,e):
         if (e.button() == Qt.LeftButton):
