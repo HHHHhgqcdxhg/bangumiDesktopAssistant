@@ -1,0 +1,38 @@
+{
+  "bilibili": {
+    "name": "bilibili",
+    "iconFile": "bilibili.png"
+  },
+  "iqiyi": {
+    "name": "爱奇艺",
+    "iconFile": "iqiyi.png"
+  },
+  "qq": {
+    "name": "腾讯视频",
+    "iconFile": "qq.png"
+  },
+  "youku": {
+    "name": "优酷",
+    "iconFile": "youku.png"
+  },
+  "acfun": {
+    "name": "AcFun",
+    "iconFile": "acfun.png"
+  },
+  "migudm": {
+    "name": "咪咕圈圈",
+    "iconFile": "migudm.png"
+  },
+  "mgtv": {
+    "name": "芒果TV",
+    "iconFile": "mgtv.png"
+  },
+  "dmhy": {
+    "name": "动漫花园",
+    "iconFile": "dmhy.png"
+  },
+  "niconico": {
+    "name": "niconico",
+    "iconFile": "niconico.png"
+  }
+}

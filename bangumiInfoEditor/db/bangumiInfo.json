@@ -1,0 +1,39 @@
+[
+    {
+        "title": "刀剑神域",
+
+        "headImgSrc": "sao.jpg",
+
+        "startChapter":1,
+        "startDate": "2018-06-19",
+        "finishDate": "2018-11-14",
+        "updateTime": "14:54",
+        "updateType": "weekly",
+        "updateDay": 6,
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md130412"
+        },
+        "follow": 1,
+        "chapters":[
+
+        ]
+    },
+    {
+        "title": "ayaya233",
+
+        "headImgSrc": "sao.jpg",
+
+        "startChapter":1,
+        "startDate": "2018-06-19",
+        "finishDate": "2018-11-14",
+        "updateTime": "14:54",
+        "updateType": "weekly",
+        "updateDay": 6,
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md130412"
+        },
+        "follow": 1
+    }
+]
