@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import Qt
+from schedulelist import ScheduleListItem
 
 class AddScheduleButton(QPushButton):
     def __init__(self,superEl):
@@ -10,5 +11,5 @@ class AddScheduleButton(QPushButton):
 
     def mousePressEvent(self, e):
         if (e.button() == Qt.LeftButton):
-            self.superEl.scheduleList.addItem("666")
+            self.superEl.scheduleList.addItem(ScheduleListItem({}))
 

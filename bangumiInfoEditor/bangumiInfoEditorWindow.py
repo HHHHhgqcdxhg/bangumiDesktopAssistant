@@ -7,11 +7,13 @@ class BangumiInfoEditorWindow(QWidget):
         super(BangumiInfoEditorWindow, self).__init__()
         self.resize(1600, 800)
         self.mainLayout = QHBoxLayout()
+        self.rightColumn = RightColumn(self)
+        self.leftColumn = LeftColumn(self)
 
-        self.leftColumn = LeftColumn()
-        self.rightColumn = RightColumn()
 
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.addWidget(self.leftColumn)
         self.mainLayout.addWidget(self.rightColumn)
+
+
         self.setLayout(self.mainLayout)

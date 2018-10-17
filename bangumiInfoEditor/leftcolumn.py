@@ -4,9 +4,10 @@ from schedulelist import ScheduleList
 from addschedulebutton import AddScheduleButton
 
 class LeftColumn(QFrame):
-    def __init__(self):
+    def __init__(self,superEl):
         super(LeftColumn, self).__init__()
 
+        self.superEl = superEl
 
         self.initUplabel()
         self.initList()
@@ -21,7 +22,7 @@ class LeftColumn(QFrame):
         self.upLabel.setText("已添加任务:")
 
     def initList(self):
-        self.scheduleList = ScheduleList()
+        self.scheduleList = ScheduleList(self)
 
     def initAddScheduleButton(self):
         self.addScheduleButton = AddScheduleButton(superEl=self)

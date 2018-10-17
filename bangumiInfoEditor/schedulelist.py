@@ -2,18 +2,23 @@ from PyQt5.QtWidgets import QListWidget,QScrollArea,QScrollBar,QListWidgetItem
 from PyQt5.QtCore import Qt
 from bangumiData import bangumiData
 
+from bangumiGeneralConfig import BangumiGeneralConfig
+
 class ScheduleList(QListWidget):
-    def __init__(self):
+    def __init__(self,superEl):
+        self.superEl = superEl
+
         super(ScheduleList, self).__init__()
         self.setFixedWidth(200)
         self.setFixedHeight(750)
         self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-
         self.initListContent()
         self.itemClicked.connect(self.myClickItem)
 
     def myClickItem(self, item):
         print(item.data)
+        self.superEl.superEl.rightColumn.bangumiGeneralConfig.setData(item.data)
+
 
     def initListContent(self):
         for perBangumiData in bangumiData:
@@ -34,5 +39,8 @@ class ScheduleList(QListWidget):
 class ScheduleListItem(QListWidgetItem):
     def __init__(self,perBangumiData):
         super(ScheduleListItem, self).__init__()
-        self.setText(perBangumiData["title"])
+        if perBangumiData:
+            self.setText(perBangumiData["title"])
+        else:
+            self.setText("番剧")
         self.data = perBangumiData

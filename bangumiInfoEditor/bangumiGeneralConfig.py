@@ -1,16 +1,26 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog
 from platformsEditor import PlatformsEditor
+from timeOpreat import weekDay2Str
+from bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
+
 class BangumiGeneralConfig(QFrame):
-    def __init__(self,data):
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, '_instance'):
+            cls._instance = QFrame.__new__(cls, *args, **kwargs)
+        return cls._instance
+    def __init__(self,superEl):
+        self.superEl = superEl
         super(BangumiGeneralConfig, self).__init__()
         self.mainLayout = QGridLayout()
 
         self.setFixedWidth(700)
         self.setFixedHeight(800)
 
+        self.data = {}
+
         # self.setStyleSheet("background-color:blue;")
         self.initUI()
-
+        # self.setData({'title': 'ayaya233', 'headImgSrc': 'sao.jpg', 'startChapter': 1, 'startDate': '2018-06-19', 'finishDate': '2018-11-14', 'updateTime': '14:54', 'updateType': 'weekly', 'updateDay': 6, 'platFormTargetUrls': {'default': 'bilibili', 'bilibili': 'https://www.bilibili.com/bangumi/media/md130412'}, 'follow': 1})
     def initUI(self):
         self.mainTitleLabel = QLabel()
         self.mainTitleLabel.setText("标题 :")
@@ -61,7 +71,7 @@ class BangumiGeneralConfig(QFrame):
         self.firstUpdateChapterEditor = QTextEdit()
         self.firstUpdateChapterEditor.setFixedHeight(24)
         self.firstUpdateChapterTip = QLabel()
-        self.firstUpdateChapterTip.setText("第一次更新时更新第几集")
+        self.firstUpdateChapterTip.setText("第一次更新时更新第几集\n(填数字)")
 
         self.mainLayout.addWidget(self.firstUpdateChapterLabel, 4, 0, 1, 1)
         self.mainLayout.addWidget(self.firstUpdateChapterEditor, 4, 1, 1, 5)
@@ -90,6 +100,7 @@ class BangumiGeneralConfig(QFrame):
         self.followLabel = QLabel()
         self.followLabel.setText("追番 :")
         self.followComboBox = QComboBox()
+
         self.followComboBox.addItem("是")
         self.followComboBox.addItem("否")
 
@@ -101,25 +112,62 @@ class BangumiGeneralConfig(QFrame):
         self.headImageSelectButton = QPushButton()
         self.headImageSelectButton.setText("选择文件")
         self.headImagePathDisableLabel = QLabel()
-        self.headImagePathDisableLabel.setText("尽量选择64x64像素的jpg或png文件")
+        self.headImagePathDisableLabel.setText("请选择64x64像素的jpg或png文件")
 
         self.mainLayout.addWidget(self.headImageLabel, 8, 0, 1, 1)
         self.mainLayout.addWidget(self.headImageSelectButton, 8, 1, 1, 1)
         self.mainLayout.addWidget(self.headImagePathDisableLabel, 8, 2, 1, 5)
 
         self.headImageLabel = QLabel()
-        self.headImageLabel.setText("看番地址 :")
+        self.headImageLabel.setText("番剧地址 :")
         self.headImageSelectButton.clicked.connect(self.selectHeadImgFile)
 
-        self.platformsEditor = PlatformsEditor()
+        self.platformsEditor = PlatformsEditor(self)
         self.mainLayout.addWidget(self.headImageLabel, 9, 0, 1, 1)
         self.mainLayout.addWidget(self.platformsEditor, 9, 1, 1, 6)
         # dir_path = QFileDialog.getExistingDirectory(self, "choose directory", "C:\\")
         self.setLayout(self.mainLayout)
 
-
+        self.enterButton = BangumiGeneralInfoEnterButton(superEl=self)
+        self.mainLayout.addWidget(self.enterButton, 10, 0, 1, 7)
 
 
     def selectHeadImgFile(self):
         imgPath = QFileDialog.getOpenFileName(self,"选择图片","", "Image Files (*.jpg;*.png;*.jpeg)")[0]
         self.headImagePathDisableLabel.setText(imgPath)
+
+    def setData(self,data):
+        if self.platformsEditor.platformSelector.myCurrentItem:
+            self.data["platFormTargetUrls"][self.platformsEditor.platformSelector.myCurrentItem.key] = self.platformsEditor.urlEditor.toPlainText()
+        self.data = data
+        if data:
+            self.mainTitleEditor.setText(data["title"])
+            if data["headImgSrc"]:
+                self.headImagePathDisableLabel.setText(data["headImgSrc"])
+            else:
+                self.headImagePathDisableLabel.setText("请选择64x64像素的jpg或png文件")
+            self.startDateEditor.setText(data["startDate"])
+            self.finalDateEditor.setText(data["finishDate"])
+            self.dayTimeEditor.setText(data["updateTime"])
+            self.firstUpdateChapterEditor.setText(str(data["startChapter"]))
+            if data["updateType"] == "weekly":
+                self.updateDayEditor.setText(weekDay2Str(data["updateDay"]))
+            else:
+                self.updateDayEditor.setText(str(data["updateDay"]))
+
+            if self.platformsEditor.platformSelector.myCurrentItem:
+                # self.data["platFormTargetUrls"][self.platformsEditor.platformSelector.myCurrentItem.key] = self.platformsEditor.urlEditor.toPlainText()
+                self.platformsEditor.platformSelector.myCurrentItem.setSelected(False)
+                self.platformsEditor.platformSelector.myCurrentItem = None
+            self.platformsEditor.urlEditor.setText("")
+        else:
+            self.mainTitleEditor.setText("")
+            self.headImagePathDisableLabel.setText("请选择64x64像素的jpg或png文件")
+            self.startDateEditor.setText("")
+            self.finalDateEditor.setText("")
+            self.dayTimeEditor.setText("")
+            self.firstUpdateChapterEditor.setText("")
+            self.updateDayEditor.setText("")
+            self.updateDayEditor.setText("")
+            # print(self.updateTypeComboBox.currentText())
+

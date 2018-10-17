@@ -1,18 +1,37 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog,QHBoxLayout,QListWidgetItem
 import json
 class PlatformSelector(QListWidget):
-    def __init__(self):
+    def __init__(self,superEl):
+        self.superEl = superEl
         super(PlatformSelector, self).__init__()
+
         self.setFixedSize(100,200)
+        self.bangumiPlatforms = {}
         with open("db/platforms.json","r",encoding="utf8") as f:
             platforms = json.load(f)
         for platformKey,platform in platforms.items():
-
-            self.addItem(PlatformListItem(platformKey,platform["name"]))
+            self.bangumiPlatforms[platformKey] = {
+                "playformEl":PlatformListItem(platformKey,platform["name"]),
+                "url":""
+            }
+            self.addItem(self.bangumiPlatforms[platformKey]["playformEl"])
         self.itemClicked.connect(self.clickPlatform)
+        self.myCurrentItem = None
+
+
 
     def clickPlatform(self, item):
-        print(item.key)
+        try:
+            if self.myCurrentItem:
+                self.superEl.superEl.data["platFormTargetUrls"][self.myCurrentItem.key] = self.superEl.urlEditor.toPlainText()
+            self.myCurrentItem = item
+
+            self.superEl.urlEditor.setText(self.superEl.superEl.data["platFormTargetUrls"][item.key])
+        except:
+            self.superEl.urlEditor.setText("")
+
+    # def initData(self):
+    #     self.
 
 class PlatformListItem(QListWidgetItem):
     def __init__(self,platformKey,platformName):
