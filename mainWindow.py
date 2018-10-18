@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QCheckBox,QWidget,QLabel,QVBoxLayout
-from PyQt5.QtCore import Qt,QTimer
+from PyQt5.QtWidgets import QCheckBox, QWidget, QLabel, QVBoxLayout
+from PyQt5.QtCore import Qt, QTimer
 
 from timeNowLabel import TimeNowLabel
 from timeTodayLabel import TimeTodayLabel
@@ -7,8 +7,10 @@ from content import ContentHolder
 
 from config import config
 from bangumiSystemTray import BangumiSystemTray
-import datetime
+import playAlarmAudio
 from timeOpreat import *
+
+
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -22,15 +24,12 @@ class MainWindow(QWidget):
         self.qTimer.timeout.connect(self.timer)
         self.qTimer.start(1000)
         self.entered = False
-
+        self.playingAudio = False
         self.nextLeaveTask = -1
-
-
 
         self.contentHolder.content.findNext()
         self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
         self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
-
 
     def timer(self):
         self.now = datetime.datetime.now()
@@ -39,8 +38,12 @@ class MainWindow(QWidget):
             self.contentHolder.content.findNext()
             self.nextLeaveTask = 1
             self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
+            if not self.playingAudio:
+                self.playingAudio = True
+                playAlarmAudio.play()
+                self.playingAudio = False
 
-        if not(self.now.hour or self.now.minute or self.now.second):
+        if not (self.now.hour or self.now.minute or self.now.second):
             self.timeTodayLabel.setTimeText()
 
         if not self.entered:
@@ -58,7 +61,7 @@ class MainWindow(QWidget):
         # 去除背景
         self.setAttribute(Qt.WA_TranslucentBackground, True)
         # 去除边框,从任务栏隐藏,窗口置顶
-        self.setWindowFlags(Qt.FramelessWindowHint|Qt.SplashScreen|Qt.WindowStaysOnTopHint)
+        self.setWindowFlags(Qt.FramelessWindowHint | Qt.SplashScreen | Qt.WindowStaysOnTopHint)
         # 窗口透明度
         self.setWindowOpacity(config.mainWindowUnfocusedOpacity)
         # 窗口颜色
@@ -75,16 +78,13 @@ class MainWindow(QWidget):
         self.mainLayout.addWidget(self.timeNowLabel)
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
 
-
         self.contentHolder = ContentHolder(self)
         self.mainLayout.addWidget(self.contentHolder)
-
 
         # self.mainLayout.setStretchFactor(self.timeTodayLabel,1)
         # self.mainLayout.setStretchFactor(self.timeNowLabel, 1)
         # self.mainLayout.setStretchFactor(self.content, 20)
         self.setLayout(self.mainLayout)
-
 
     def leaveEvent(self, QEvent):
         self.entered = False
@@ -95,6 +95,7 @@ class MainWindow(QWidget):
         self.entered = True
         self.setWindowOpacity(config.mainWindowFocusedOpacity)
         self.contentHolder.active()
+
     # def enterEvent(self, QEvent):
     #
     # def leaveEvent(self, QEvent):
@@ -102,6 +103,7 @@ class MainWindow(QWidget):
     def initSystemTray(self):
         self.systemTray = BangumiSystemTray(self)
 
+
 if __name__ == '__main__':
-    mainWindow=MainWindow()
+    mainWindow = MainWindow()
     mainWindow.show()

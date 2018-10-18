@@ -33,7 +33,7 @@ class TimeTodayLabel(QLabel):
         self.setText(dateS)
 
     def setBgVisiable(self):
-        self.setStyleSheet(f"background-color: {config.colors.topBg}")
+        self.setStyleSheet(f"background-color: {config.colors.topBg};border-radius:15px;")
 
     def setBgDisvisiable(self):
         self.setStyleSheet("background-color: rgba(0,255,0,0.01)")

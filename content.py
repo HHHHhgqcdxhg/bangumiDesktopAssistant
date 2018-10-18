@@ -7,7 +7,7 @@ from perBangumiEl import PerBangumi
 from bangumiInfoHandler import BangumuInfo
 
 from timeOpreat import time1Minutes
-import datetime,math
+import datetime
 class ContentHolder(QScrollArea):
     def __init__(self,superEl):
         self.superEl = superEl

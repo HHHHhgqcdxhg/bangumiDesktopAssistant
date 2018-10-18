@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication
 from mainWindow import MainWindow
 from bangumiInfoEditor import BangumiInfoEditorWindow
 
-if __name__ == '__main__':
+def bangumi():
     app = QApplication(sys.argv)
     mainWindow = MainWindow()
     bangumiInfoEditorWindow = BangumiInfoEditorWindow()
@@ -11,5 +11,8 @@ if __name__ == '__main__':
 
     app.setQuitOnLastWindowClosed(False)
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    bangumi()
 
 

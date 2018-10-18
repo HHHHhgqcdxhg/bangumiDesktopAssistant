@@ -1,5 +1,4 @@
 import datetime
-import calendar
 def getMonthDays(month):
     if month == 1:
         days = 31
@@ -27,23 +26,6 @@ def getMonthDays(month):
         days = 31
     return days
     return datetime.timedelta(days=days)
-
-def getNextWeekDay(weekDay):
-    if weekDay == 0:
-        m1 = calendar.MONDAY
-    elif weekDay == 1:
-        m1 = calendar.TUESDAY
-    elif weekDay == 2:
-        m1 = calendar.WEDNESDAY
-    elif weekDay == 3:
-        m1 = calendar.TUESDAY
-    elif weekDay == 4:
-        m1 = calendar.FRIDAY
-    elif weekDay == 5:
-        m1 = calendar.SATURDAY
-    elif weekDay == 6:
-        m1 = calendar.SUNDAY
-    return datetime.timedelta(days=m1 + 1 if m1 <= 5 else m1 - 6)
 
 def getNextMonthDay(now,monthDay):
     if monthDay > now.day:
