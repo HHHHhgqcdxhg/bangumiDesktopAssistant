@@ -49,7 +49,6 @@ def getNextMonthDay(now,monthDay):
     if monthDay > now.day:
         return monthDay - now.day
     else:
-        print(monthDay,now.day,getMonthDays(now.month))
         return monthDay - now.day + getMonthDays(now.month)
     pass
 timeZero = datetime.timedelta(days=0)

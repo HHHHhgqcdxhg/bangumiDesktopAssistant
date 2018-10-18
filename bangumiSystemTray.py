@@ -7,7 +7,7 @@ class BangumiSystemTray(QSystemTrayIcon):
         self.superEl = superEl
         super(BangumiSystemTray, self).__init__(superEl)
         self.setIcon(QIcon("src/img/icon/icon.ico"))
-        show_action = QAction("番剧编辑器", self)
+        show_action = QAction("追番编辑", self)
         quit_action = QAction("退出", self)
         show_action.triggered.connect(showWindow)
         quit_action.triggered.connect(sysExit)
@@ -16,7 +16,6 @@ class BangumiSystemTray(QSystemTrayIcon):
         tray_menu.addAction(quit_action)
         self.setContextMenu(tray_menu)
         self.show()
-        print(self)
 
 def sysExit():
     sys.exit(0)

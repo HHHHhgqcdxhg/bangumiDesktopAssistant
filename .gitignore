@@ -3,3 +3,5 @@
 *.jpg
 *.png
 tmp.py
+build/
+dist/

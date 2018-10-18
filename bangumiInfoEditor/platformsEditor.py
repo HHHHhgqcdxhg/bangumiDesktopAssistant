@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog,QHBoxLayout
-from platformselector import PlatformSelector
+from .platformselector import PlatformSelector
 
 class PlatformsEditor(QFrame):
     def __init__(self,superEl):
@@ -22,5 +22,4 @@ class PlatformsEditor(QFrame):
         self.mainLayout.addWidget(self.urlInputLabel)
         self.mainLayout.addWidget(self.urlEditor)
         self.setLayout(self.mainLayout)
-    def closeEvent(self, *args, **kwargs):
-        print(1)
+

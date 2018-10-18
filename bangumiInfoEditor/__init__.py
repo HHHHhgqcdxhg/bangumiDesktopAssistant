@@ -1,2 +1,2 @@
 from .bangumiInfoEditor import showWindow
-from bangumiInfoEditorWindow import BangumiInfoEditorWindow
+from .bangumiInfoEditorWindow import BangumiInfoEditorWindow

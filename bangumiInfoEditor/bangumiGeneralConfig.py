@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog
-from platformsEditor import PlatformsEditor
+from .platformsEditor import PlatformsEditor
 from timeOpreat import weekDay2Str
-from bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
+from .bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
 
 class BangumiGeneralConfig(QFrame):
     def __new__(cls, *args, **kwargs):

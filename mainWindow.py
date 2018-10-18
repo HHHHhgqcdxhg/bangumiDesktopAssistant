@@ -1,7 +1,5 @@
 from PyQt5.QtWidgets import QCheckBox,QWidget,QLabel,QVBoxLayout
 from PyQt5.QtCore import Qt,QTimer
-# from PyQt5.QtGui import None
-import sys
 
 from timeNowLabel import TimeNowLabel
 from timeTodayLabel import TimeTodayLabel
