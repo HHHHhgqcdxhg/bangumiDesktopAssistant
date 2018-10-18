@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QLabel,QFrame,QVBoxLayout,QListWidget,QHBoxLayout,QW
 from .leftcolumn import LeftColumn
 from .rightColumn import RightColumn
 from PyQt5.QtGui import QIcon
+import ctypes
 class BangumiInfoEditorWindow(QWidget):
     def __init__(self):
         super(BangumiInfoEditorWindow, self).__init__()
@@ -12,7 +13,7 @@ class BangumiInfoEditorWindow(QWidget):
         self.rightColumn = RightColumn(self)
         self.leftColumn = LeftColumn(self)
 
-
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("追番编辑")
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.addWidget(self.leftColumn)
         self.mainLayout.addWidget(self.rightColumn)
@@ -21,6 +22,6 @@ class BangumiInfoEditorWindow(QWidget):
         self.setLayout(self.mainLayout)
 
 
-    def closeEvent(self, QCloseEvent):
-        # self.appMainWindow().show()
-        self.hide()
+    # def closeEvent(self, QCloseEvent):
+    #     self.appMainWindow().show()
+    #     self.hide()

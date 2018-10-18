@@ -1,7 +1,6 @@
 *.pyc
 .idea/
-*.jpg
-*.png
 tmp.py
 build/
 dist/
+src/img/bangumiheadimg/

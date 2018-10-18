@@ -18,12 +18,13 @@ class BangumuInfo():
         for bangumiJsonFileName in bangumiJsons:
             with open(f"{dbPath}/{bangumiJsonFileName}", "r", encoding="utf8") as f:
                 bangumiData.append(json.load(f))
-        for perBangumiData in bangumiData:
-            chapterId = perBangumiData["startChapter"]
-            for perChapter in perBangumiData["chapters"]:
 
-                bangumiChapters.append(BangumuInfo(perBangumiData,chapterId, datetime.datetime.strptime(perChapter["updateTime"], "%Y-%m-%d %H:%M:%S")))
-                chapterId += 1
+        for perBangumiData in bangumiData:
+            if not perBangumiData["info"]["follow"]:
+                continue
+            for perChapter in perBangumiData["chapters"]:
+                bangumiChapters.append(BangumuInfo(perBangumiData,perChapter["chapterId"], datetime.datetime.strptime(perChapter["updateTime"], "%Y-%m-%d %H:%M:%S")))
+
         # with open("bangumiInfoEditor/db/bangumisInfo/.json", "r", encoding="utf8") as f:
         #     bangumiInfoList = json.load(f)
         # bangumiChapters = []
