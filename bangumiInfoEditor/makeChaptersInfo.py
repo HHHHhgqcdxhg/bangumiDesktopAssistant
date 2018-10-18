@@ -1,6 +1,7 @@
-import datetime,json,time
+import datetime,json,time,os
 from PIL import Image
 from PyQt5.QtWidgets import QMessageBox
+from .bangumiData import current_path
 class PerChapterInfo:
     def __init__(self, bangumiTitle, updateTime: datetime.datetime, chapterId,headImg:str, chapterName="", title=""):
         self.bangumiTitle = bangumiTitle
@@ -34,20 +35,22 @@ class BangumiChapters:
         if info["title"] == "新添番剧":
             raise Exception("noTitle")
         self.title = info["title"]
+        self.currentPath = current_path
+        if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
+            imgFileName = info["headImgSrc"]
+            imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"
+        else:
+            try:
+            # info["headImgSrc"] = f"../src/img/bangumiheadimg/{info['headImgSrc']}"
+                img = Image.open(info["headImgSrc"])
+            except:
+                raise Exception("noImage")
+            img = img.convert("RGB")
+            img = img.resize((64, 64),Image.ANTIALIAS)
+            imgFileName = f"{int(time.time())}.jpg"
 
-
-        try:
-            if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
-                info["headImgSrc"] = f"../src/img/bangumiheadimg/{info['headImgSrc']}"
-
-            img = Image.open(info["headImgSrc"])
-        except:
-            raise Exception("noImage")
-        img = img.convert("RGB")
-        img = img.resize((64, 64),Image.ANTIALIAS)
-        imgFileName = f"{int(time.time())}.jpg"
-        imgFilePath = f"../src/img/bangumiheadimg/{imgFileName}"
-        img.save(imgFilePath)
+            imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"
+            img.save(imgFilePath)
 
         self.headImgSrc = imgFileName
         self.startChapter = info["startChapter"]

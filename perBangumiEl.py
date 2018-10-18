@@ -119,6 +119,7 @@ class PerBangumiInfo(QFrame):
 class Title(QLabel):
     def __init__(self, title):
         super(Title, self).__init__()
+        self.setFixedWidth(125)
         self.setWordWrap(True)
         self.setStyleSheet(f"color:{config.colors.bangumiTitle};")
         self.setText(title)
