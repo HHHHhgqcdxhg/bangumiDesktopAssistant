@@ -2,11 +2,12 @@ from PyQt5.QtWidgets import QSystemTrayIcon,QMenu,QAction,QStyle
 from PyQt5.QtGui import QIcon
 from bangumiInfoEditor import showWindow
 import sys
+from config import PATH
 class BangumiSystemTray(QSystemTrayIcon):
     def __init__(self,superEl):
         self.superEl = superEl
         super(BangumiSystemTray, self).__init__(superEl)
-        self.setIcon(QIcon("src/img/icon/icon.ico"))
+        self.setIcon(QIcon(f"{PATH}/src/img/icon/icon.ico"))
         show_action = QAction("追番编辑", self)
         quit_action = QAction("退出", self)
         show_action.triggered.connect(showWindow)

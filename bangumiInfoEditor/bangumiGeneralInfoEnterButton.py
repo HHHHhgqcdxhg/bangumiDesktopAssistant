@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QFrame, QLabel, QListWidget, QVBoxLayout, QPushButto
 from PyQt5.QtCore import Qt
 import datetime,json
 from .makeChaptersInfo import BangumiChapters
-
+from config import PATH
 class CJsonEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime.datetime):
@@ -62,7 +62,7 @@ class BangumiGeneralInfoEnterButton(QPushButton):
                 scheduleList = self.superEl.superEl.superEl.leftColumn.scheduleList
                 scheduleList.myCurrentItem.setText(bangumiChapters.title)
                 scheduleList.myCurrentItem.data = bangumiChapters
-                with open(f"db/bangumisInfo/{bangumiChapters.title}.json","w+",encoding="utf8") as f:
+                with open(f"{PATH}/db/bangumisInfo/{bangumiChapters.title}.json","w+",encoding="utf8") as f:
                     writeDict = bangumiChapters.makeDict()
                     json.dump(writeDict,f,ensure_ascii=False,cls=CJsonEncoder)
                 # print(self.superEl.superEl.superEl.leftColumn.scheduleList.myCurrentItem.text())

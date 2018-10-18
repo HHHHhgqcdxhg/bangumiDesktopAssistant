@@ -5,6 +5,7 @@ from PyQt5.QtGui import QPixmap
 import datetime
 import webbrowser
 from timeOpreat import time1Days,weekDay2Str,time7Days,timeZero,time14Days
+from config import PATH
 
 
 class PerBangumi(QFrame):
@@ -82,7 +83,7 @@ class PerBangumiImg(QLabel):
         self.setFixedHeight(64)
         self.setStyleSheet("background-color:blue;")
         self.url = url
-        self.img = QPixmap("src/img/bangumiheadimg/" + imgPath)
+        self.img = QPixmap(f"{PATH}/src/img/bangumiheadimg/" + imgPath)
         self.setPixmap(self.img)
 
         self.setCursor(Qt.PointingHandCursor)

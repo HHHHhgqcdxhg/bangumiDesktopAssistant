@@ -5,6 +5,7 @@ from config import config
 
 from perBangumiEl import PerBangumi
 from bangumiInfoHandler import BangumuInfo
+from config import PATH
 
 from timeOpreat import time1Minutes
 import datetime
@@ -20,7 +21,7 @@ class ContentHolder(QScrollArea):
         # self.setCursor()
         self.content = Content(self)
         self.setWidget(self.content)
-        with open("src/style/scrollbar.qss", "r",encoding="utf8") as f:
+        with open(f"{PATH}/src/style/scrollbar.qss", "r",encoding="utf8") as f:
             qssContent = f.read()
         self.setStyleSheet(qssContent)
 

@@ -1,7 +1,7 @@
 import datetime,json,time,os
 from PIL import Image
 from PyQt5.QtWidgets import QMessageBox
-from .bangumiData import current_path
+from config import PATH
 class PerChapterInfo:
     def __init__(self, bangumiTitle, updateTime: datetime.datetime, chapterId,headImg:str, chapterName="", title=""):
         self.bangumiTitle = bangumiTitle
@@ -35,7 +35,7 @@ class BangumiChapters:
         if info["title"] == "新添番剧":
             raise Exception("noTitle")
         self.title = info["title"]
-        self.currentPath = current_path
+        self.currentPath = PATH
         if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
             imgFileName = info["headImgSrc"]
             imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"

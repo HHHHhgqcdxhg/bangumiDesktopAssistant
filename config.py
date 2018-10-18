@@ -1,6 +1,6 @@
-import json
-
-with open("src/db/config.json","r") as f:
+import json,os
+PATH = os.path.dirname(__file__)
+with open(f"{PATH}/src/db/config.json","r") as f:
     configDict = json.load(f)
 
 class Colors:

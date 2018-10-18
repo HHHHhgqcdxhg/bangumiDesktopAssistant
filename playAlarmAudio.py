@@ -2,9 +2,9 @@ import wave
 import pyaudio
 
 CHUNK = 1024
-
+from config import PATH
 def play():
-    wf = wave.open("src/audio/alarm.wav", 'rb')
+    wf = wave.open(f"{PATH}/src/audio/alarm.wav", 'rb')
 
     p = pyaudio.PyAudio()
     stream = p.open(format=p.get_format_from_width(wf.getsampwidth()),

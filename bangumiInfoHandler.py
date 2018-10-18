@@ -1,5 +1,5 @@
 import datetime, json, os
-
+from config import PATH
 class BangumuInfo():
     def __init__(self, info: dict,chapterId, updateTime: datetime.datetime):
         self.title = info["title"]
@@ -13,7 +13,7 @@ class BangumuInfo():
     def factory()->list:
         bangumiData = []
         bangumiChapters = []
-        dbPath = "db/bangumisInfo"
+        dbPath = f"{PATH}/db/bangumisInfo"
         bangumiJsons = os.listdir(dbPath)
         for bangumiJsonFileName in bangumiJsons:
             with open(f"{dbPath}/{bangumiJsonFileName}", "r", encoding="utf8") as f:

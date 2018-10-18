@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog,QHBoxLayout,QListWidgetItem
 import json
+from config import PATH
 class PlatformSelector(QListWidget):
     def __init__(self,superEl):
         self.superEl = superEl
@@ -7,7 +8,7 @@ class PlatformSelector(QListWidget):
 
         self.setFixedSize(100,200)
         self.bangumiPlatforms = {}
-        with open("db/platforms.json","r",encoding="utf8") as f:
+        with open(f"{PATH}/db/platforms.json","r",encoding="utf8") as f:
             platforms = json.load(f)
         for platformKey,platform in platforms.items():
             self.bangumiPlatforms[platformKey] = {
