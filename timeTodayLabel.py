@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 import datetime
 from timeOpreat import weekDay2Str
 from PyQt5.QtGui import QColor
-from config import config
+from config import config,changeMainWindowOffset
 
 class TimeTodayLabel(QLabel):
     def __init__(self,superEl):
@@ -54,7 +54,10 @@ class TimeTodayLabel(QLabel):
         if self.superEl.leftButtonOn:
             ePos = e.globalPos()
             x,y = ePos.x(),ePos.y()
-            self.superEl.move(x - self.superEl.dragStartX + self.superEl.windowX,y - self.superEl.dragStartY + self.superEl.windowY)
+            setX,setY = x - self.superEl.dragStartX + self.superEl.windowX,y - self.superEl.dragStartY + self.superEl.windowY
+            self.superEl.move(setX,setY)
+            changeMainWindowOffset([setX,setY])
+
 
     def enterEvent(self, QEvent):
         self.setBgVisiable()

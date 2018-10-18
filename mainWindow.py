@@ -10,10 +10,10 @@ from bangumiSystemTray import BangumiSystemTray
 import playAlarmAudio
 from timeOpreat import *
 
-
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
+        self.move(config.mainWindowOffset[0],config.mainWindowOffset[1])
         self.initSystemTray()
         self.setMouseTracking(True)
         self.leftButtonOn = False
