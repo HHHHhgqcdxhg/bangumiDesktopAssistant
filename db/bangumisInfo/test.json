@@ -1,0 +1,122 @@
+{
+    "title": "test",
+    "headImgSrc": "1539829623.jpg",
+    "startChapter": 1,
+    "startDate": "2018-10-18",
+    "finishDate": "2018-12-12",
+    "updateType": "weekly",
+    "updateDay": "周四",
+    "updateTime": "10:30",
+    "platFormTargetUrls": {
+        "default": "bilibili",
+        "bilibili": "https://www.bilibili.com/bangumi/media/md",
+        "iqiyi": "",
+        "qq": "",
+        "youku": "",
+        "acfun": "",
+        "migudm": "",
+        "mgtv": "",
+        "dmhy": "",
+        "niconico": ""
+    },
+    "follow": true,
+    "startUpdateDateTime": "2018-10-18 10:30:00",
+    "finalUpdateDateTime": "2018-12-12 10:30:00",
+    "chapters": [
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-10-18 10:41:00",
+            "updateTimeText": "2018-10-18 10:41:00",
+            "chapterId": 2,
+            "chapterName": "第2话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-10-25 10:30:00",
+            "updateTimeText": "2018-10-25 10:30:00",
+            "chapterId": 3,
+            "chapterName": "第3话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-11-01 10:30:00",
+            "updateTimeText": "2018-11-01 10:30:00",
+            "chapterId": 4,
+            "chapterName": "第4话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-11-08 10:30:00",
+            "updateTimeText": "2018-11-08 10:30:00",
+            "chapterId": 5,
+            "chapterName": "第5话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-11-15 10:30:00",
+            "updateTimeText": "2018-11-15 10:30:00",
+            "chapterId": 6,
+            "chapterName": "第6话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-11-22 10:30:00",
+            "updateTimeText": "2018-11-22 10:30:00",
+            "chapterId": 7,
+            "chapterName": "第7话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-11-29 10:30:00",
+            "updateTimeText": "2018-11-29 10:30:00",
+            "chapterId": 8,
+            "chapterName": "第8话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        },
+        {
+            "bangumiTitle": "test",
+            "updateTime": "2018-12-06 10:30:00",
+            "updateTimeText": "2018-12-06 10:30:00",
+            "chapterId": 9,
+            "chapterName": "第9话",
+            "title": "无",
+            "headImg": "1539829623.jpg"
+        }
+    ],
+    "info": {
+        "title": "test",
+        "headImgSrc": "C:/Users/MSI/Desktop/R}0C01~P1IX)HPAZ1J8L~$I.jpg",
+        "startChapter": 1,
+        "startDate": "2018-10-18",
+        "finishDate": "2018-12-12",
+        "updateTime": "10:30",
+        "updateType": "weekly",
+        "updateDay": "周四",
+        "platFormTargetUrls": {
+            "default": "bilibili",
+            "bilibili": "https://www.bilibili.com/bangumi/media/md",
+            "iqiyi": "",
+            "qq": "",
+            "youku": "",
+            "acfun": "",
+            "migudm": "",
+            "mgtv": "",
+            "dmhy": "",
+            "niconico": ""
+        },
+        "follow": true
+    }
+}

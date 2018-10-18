@@ -8,12 +8,13 @@ from timeTodayLabel import TimeTodayLabel
 from content import ContentHolder
 
 from config import config
-
+from bangumiSystemTray import BangumiSystemTray
 import datetime
 from timeOpreat import *
 class MainWindow(QWidget):
     def __init__(self):
         super(MainWindow, self).__init__()
+        self.initSystemTray()
         self.setMouseTracking(True)
         self.leftButtonOn = False
         self.initUI()
@@ -22,14 +23,28 @@ class MainWindow(QWidget):
         self.qTimer = QTimer(self)
         self.qTimer.timeout.connect(self.timer)
         self.qTimer.start(1000)
-        self.nextLeaveTask = -1
         self.entered = False
+
+        self.nextLeaveTask = -1
+
+
+
+        self.contentHolder.content.findNext()
+        self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
+        self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
+
 
     def timer(self):
         self.now = datetime.datetime.now()
         self.timeNowLabel.setText(self.now.strftime("%H:%M:%S"))
+        if self.contentHolder.content.nextDatetime - self.now <= time1seconds:
+            self.contentHolder.content.findNext()
+            self.nextLeaveTask = 1
+            self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
+
         if not(self.now.hour or self.now.minute or self.now.second):
             self.timeTodayLabel.setTimeText()
+
         if not self.entered:
             if self.nextLeaveTask > 0:
                 self.nextLeaveTask -= 1
@@ -76,7 +91,7 @@ class MainWindow(QWidget):
     def leaveEvent(self, QEvent):
         self.entered = False
         self.nextLeaveTask = 1
-        self.needSetScrollBarValue = self.contentHolder.content.nextIndex
+        self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
 
     def enterEvent(self, QEvent):
         self.entered = True
@@ -85,6 +100,9 @@ class MainWindow(QWidget):
     # def enterEvent(self, QEvent):
     #
     # def leaveEvent(self, QEvent):
+
+    def initSystemTray(self):
+        self.systemTray = BangumiSystemTray(self)
 
 if __name__ == '__main__':
     mainWindow=MainWindow()

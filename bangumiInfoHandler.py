@@ -13,7 +13,7 @@ class BangumuInfo():
     def factory()->list:
         bangumiData = []
         bangumiChapters = []
-        dbPath = "bangumiInfoEditor/db/bangumisInfo"
+        dbPath = "db/bangumisInfo"
         bangumiJsons = os.listdir(dbPath)
         for bangumiJsonFileName in bangumiJsons:
             print(f"{dbPath}/{bangumiJsonFileName}")

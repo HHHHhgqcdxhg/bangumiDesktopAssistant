@@ -14,10 +14,12 @@
         "updateTimeBg": "#ccff00",
         "bangumiContentBg": "#ffcccc",
         "bangumiHeadImgBorder": "#ffcccc",
+        "timeNowBg":"rgb(0,138,255)",
 
         "timeNowText":"#000000",
-        "bangumiTime":"#ff5aa8",
-        "dotBeforBangumiTime":"#ff5aa8",
+        "bangumiTime":"#000000",
+        "bangumiTimeBg":"rgba(255,102,0,0.8)",
+        "dotBeforBangumiTime":"rgb(0,138,255)",
         "bangumiTitle":"#000",
         "bangumiChapter":"#ff5aa8"
     }

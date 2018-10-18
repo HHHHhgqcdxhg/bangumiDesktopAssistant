@@ -28,7 +28,9 @@ class PerBangumi(QFrame):
 class PerBangumiTimeFrame(QFrame):
     def __init__(self,updateTime:datetime.datetime):
         super(PerBangumiTimeFrame, self).__init__()
-        self.setFixedWidth(56)
+        self.setFixedWidth(70)
+        self.setFixedHeight(28)
+        self.setStyleSheet(f"background-color:{config.colors.bangumiTimeBg};border-radius:8px;")
         self.mainLayout = QHBoxLayout()
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.addWidget(PerBangumiTimeDotLabel())
@@ -57,7 +59,7 @@ class PerBangumiTimeDotLabel(QLabel):
     def __init__(self):
         super(PerBangumiTimeDotLabel, self).__init__()
         self.setStyleSheet(
-            f"margin:0;font-size:27px;color:{config.colors.dotBeforBangumiTime};")
+            f"background:transparent;margin:0;font-size:27px;color:{config.colors.dotBeforBangumiTime};")
         self.setFixedWidth(17)
         self.setText("·")
         # self.resize(20, 10)
@@ -69,7 +71,7 @@ class PerBangumiTimeDotLabel(QLabel):
 class PerBangumiTimeLabel(QLabel):
     def __init__(self,updateTimeText:str):
         super(PerBangumiTimeLabel, self).__init__()
-        self.setStyleSheet(f"color:{config.colors.bangumiTime};")
+        self.setStyleSheet(f"background:transparent;color:{config.colors.bangumiTime};")
         self.setText(updateTimeText)
 
 

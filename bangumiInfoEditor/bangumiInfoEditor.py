@@ -1,8 +1,13 @@
 from bangumiInfoEditorWindow import BangumiInfoEditorWindow
 from PyQt5.QtWidgets import QApplication
 import sys
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
+
+def showWindow():
     bangumiEditorWindow = BangumiInfoEditorWindow()
     bangumiEditorWindow.show()
+
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    showWindow()
     sys.exit(app.exec_())

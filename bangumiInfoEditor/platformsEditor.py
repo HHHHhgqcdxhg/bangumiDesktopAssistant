@@ -22,3 +22,5 @@ class PlatformsEditor(QFrame):
         self.mainLayout.addWidget(self.urlInputLabel)
         self.mainLayout.addWidget(self.urlEditor)
         self.setLayout(self.mainLayout)
+    def closeEvent(self, *args, **kwargs):
+        print(1)

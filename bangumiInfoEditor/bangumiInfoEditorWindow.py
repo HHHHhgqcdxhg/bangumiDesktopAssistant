@@ -17,3 +17,8 @@ class BangumiInfoEditorWindow(QWidget):
 
 
         self.setLayout(self.mainLayout)
+
+
+    def closeEvent(self, QCloseEvent):
+        # self.appMainWindow().show()
+        self.hide()

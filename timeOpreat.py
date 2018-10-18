@@ -57,7 +57,8 @@ time1Days = datetime.timedelta(days=1)
 time7Days = datetime.timedelta(days=7)
 time14Days = datetime.timedelta(days=14)
 time30Days = datetime.timedelta(days=30)
-
+time1seconds = datetime.timedelta(seconds=1)
+time1Minutes = datetime.timedelta(minutes=1)
 def weekDay2Str(weekday):
     if weekday == 0:
         return "周一"

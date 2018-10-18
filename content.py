@@ -6,7 +6,7 @@ from config import config
 from perBangumiEl import PerBangumi
 from bangumiInfoHandler import BangumuInfo
 
-
+from timeOpreat import time1Minutes
 import datetime,math
 class ContentHolder(QScrollArea):
     def __init__(self,superEl):
@@ -67,6 +67,7 @@ class Content(QFrame):
 
         self.bangumiChapters = BangumuInfo.factory()
 
+        self.nextDatetime = None
         self.nextIndex = 0
         for bangumiChapter in self.bangumiChapters:
             p = PerBangumi(bangumiChapter)
@@ -78,6 +79,7 @@ class Content(QFrame):
     def findNext(self):
         now = datetime.datetime.now()
         for x in range(self.nextIndex,self.bangumiChapters.__len__()):
-            if self.bangumiChapters[x].updateTime > now:
+            if self.bangumiChapters[x].updateTime - now >= time1Minutes:
+                self.nextDatetime = self.bangumiChapters[x].updateTime
                 self.nextIndex = x
                 return x
