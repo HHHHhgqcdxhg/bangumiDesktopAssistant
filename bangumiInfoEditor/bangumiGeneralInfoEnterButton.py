@@ -63,7 +63,7 @@ class BangumiGeneralInfoEnterButton(QPushButton):
                     json.dump(writeDict,f,ensure_ascii=False,cls=CJsonEncoder)
                 # print(self.superEl.superEl.superEl.leftColumn.scheduleList.myCurrentItem.text())
 
-                QMessageBox.about(self, "添加/修改成功!", "添加/修改成功!")
+                QMessageBox.about(self, "设置成功!", "设置成功!\n请重启桌面挂件以应用设置!")
             except Exception as e:
                 stre = str(e)
                 if stre == "noImage":
