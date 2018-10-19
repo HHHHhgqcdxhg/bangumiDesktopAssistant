@@ -39,18 +39,20 @@ class BangumiChapters:
         if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
             imgFileName = info["headImgSrc"]
             imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"
+            img = Image.open(imgFilePath)
         else:
             try:
             # info["headImgSrc"] = f"../src/img/bangumiheadimg/{info['headImgSrc']}"
                 img = Image.open(info["headImgSrc"])
             except:
                 raise Exception("noImage")
-            img = img.convert("RGB")
-            img = img.resize((64, 64),Image.ANTIALIAS)
-            imgFileName = f"{int(time.time())}.jpg"
 
-            imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"
-            img.save(imgFilePath)
+        img = img.convert("RGB")
+        img = img.resize((64, 64),Image.ANTIALIAS)
+        imgFileName = f"{info['title']}.jpg"
+
+        imgFilePath = f"{self.currentPath}/src/img/bangumiheadimg/{imgFileName}"
+        img.save(imgFilePath)
 
         self.headImgSrc = imgFileName
         self.startChapter = info["startChapter"]

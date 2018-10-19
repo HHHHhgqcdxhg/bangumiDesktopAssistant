@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QFrame, QLabel, QListWidget, QVBoxLayout, QPushButton, QGridLayout, QTextEdit, QComboBox,QMessageBox,QFileDialog
 from PyQt5.QtCore import Qt
 import datetime,json
-from makeChaptersInfo import BangumiChapters
+from .makeChaptersInfo import BangumiChapters
 from config import PATH
 class CJsonEncoder(json.JSONEncoder):
     def default(self, obj):

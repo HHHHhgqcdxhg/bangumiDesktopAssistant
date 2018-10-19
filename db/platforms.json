@@ -34,5 +34,9 @@
   "niconico": {
     "name": "niconico",
     "iconFile": "niconico.png"
-  }
+  },
+    "dilidili": {
+        "name": "嘀哩嘀哩",
+        "iconFile": "iconFile.png"
+    }
 }

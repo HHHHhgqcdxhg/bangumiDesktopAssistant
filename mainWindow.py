@@ -11,8 +11,9 @@ import playAlarmAudio
 from timeOpreat import *
 
 class MainWindow(QWidget):
-    def __init__(self):
+    def __init__(self,app):
         super(MainWindow, self).__init__()
+        self.app = app
         self.move(config.mainWindowOffset[0],config.mainWindowOffset[1])
         self.initSystemTray()
         self.setMouseTracking(True)

@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog,QHBoxLayout,QCheckBox
-from platformselector import PlatformSelector
+from .platformselector import PlatformSelector
 
 class PlatformsEditor(QFrame):
     def __init__(self,superEl):

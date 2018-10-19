@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QLabel,QFrame,QVBoxLayout,QListWidget,QHBoxLayout,QWidget
-from leftcolumn import LeftColumn
-from rightColumn import RightColumn
+from .leftcolumn import LeftColumn
+from .rightColumn import RightColumn
 from PyQt5.QtGui import QIcon
 from config import PATH
 import ctypes

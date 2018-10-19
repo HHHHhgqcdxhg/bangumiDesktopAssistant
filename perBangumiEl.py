@@ -1,11 +1,12 @@
 from config import config
-from PyQt5.QtWidgets import QLabel, QFrame, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QLabel, QFrame, QHBoxLayout, QVBoxLayout, QGridLayout
 from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QIcon
 import datetime
 import webbrowser
-from timeOpreat import time1Days,weekDay2Str,time7Days,timeZero,time14Days
+from timeOpreat import time1Days, weekDay2Str, time7Days, timeZero, time14Days
 from config import PATH
+import perPlatform
 
 
 class PerBangumi(QFrame):
@@ -22,12 +23,13 @@ class PerBangumi(QFrame):
         self.mainLayout.setContentsMargins(0, 0, 0, 0)
         self.mainLayout.addWidget(PerBangumiTimeFrame(self.bangumiInfo.updateTime))
         self.mainLayout.addWidget(PerBangumiImg(self.bangumiInfo.imgSrc, self.bangumiInfo.url))
-        self.mainLayout.addWidget(PerBangumiInfo(self.bangumiInfo.title, self.bangumiInfo.chapter, self.bangumiInfo.platformsInfo))
+        self.mainLayout.addWidget(
+            PerBangumiInfo(self.bangumiInfo.title, self.bangumiInfo.chapter, self.bangumiInfo.platformsInfo))
         self.setLayout(self.mainLayout)
 
 
 class PerBangumiTimeFrame(QFrame):
-    def __init__(self,updateTime:datetime.datetime):
+    def __init__(self, updateTime: datetime.datetime):
         super(PerBangumiTimeFrame, self).__init__()
         self.setFixedWidth(70)
         self.setFixedHeight(28)
@@ -70,7 +72,7 @@ class PerBangumiTimeDotLabel(QLabel):
 
 
 class PerBangumiTimeLabel(QLabel):
-    def __init__(self,updateTimeText:str):
+    def __init__(self, updateTimeText: str):
         super(PerBangumiTimeLabel, self).__init__()
         self.setStyleSheet(f"background:transparent;color:{config.colors.bangumiTime};")
         self.setText(updateTimeText)
@@ -81,7 +83,6 @@ class PerBangumiImg(QLabel):
         super(PerBangumiImg, self).__init__()
         self.setFixedWidth(64)
         self.setFixedHeight(64)
-        self.setStyleSheet("background-color:blue;")
         self.url = url
         self.img = QPixmap(f"{PATH}/src/img/bangumiheadimg/" + imgPath)
         self.setPixmap(self.img)
@@ -134,6 +135,37 @@ class Chapter(QLabel):
 
 
 class Platforms(QFrame):
-    def __init__(self, platformsInfo):
+    def __init__(self, platformsInfo: dict):
         super(Platforms, self).__init__()
+
+        platformsInfo = self.filter(platformsInfo)
+        c = 0
+        for k, v in platformsInfo.items():
+            if k == "default":
+                continue
+            l = perPlatform.PerPlatform(k, v, self)
+            l.move((c % 6) * 20, int(c / 6) * 20)
+            c += 1
+        # for x in range(8):
+        #     a = QLabel()
+        #     img = QPixmap(f"{PATH}/src/img/platformicon/bilibili.png")
+        #     a.setPixmap(img)
+        #     self.mainLayout.addWidget(a,x//4,x%4,1,1)
+
+    @staticmethod
+    def filter(platforms: dict):
+        retDict = {}
+        for k, v in platforms.items():
+            if k == "default":
+                retDict[k] = v
+            elif k == "bilibili":
+                if v and not v == "https://www.bilibili.com/bangumi/media/md":
+                    retDict[k] = v
+            elif k == "acfun":
+                if v and not v == "http://www.acfun.cn/bangumi/aa":
+                    retDict[k] = v
+            elif k in ["iqiyi", "qq", "youku", "migudm", "mgtv", "dmhy", "niconico","dilidili"] and v:
+                retDict[k] = v
+        return retDict
+
 # perBangumiTimeDotLabel = PerBangumiTimeDotLabel()
