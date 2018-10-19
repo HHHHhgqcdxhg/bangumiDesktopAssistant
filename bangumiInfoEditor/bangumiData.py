@@ -2,7 +2,7 @@ import json,os
 from config import PATH
 bangumiData = []
 
-dbPath = f"{PATH}/db/bangumisInfo"
+dbPath = f"{PATH}/src/db/bangumisInfo"
 
 bangumiJsons = os.listdir(dbPath)
 for bangumiJsonFileName in bangumiJsons:

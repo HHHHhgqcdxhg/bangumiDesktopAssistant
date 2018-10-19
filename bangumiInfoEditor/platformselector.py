@@ -8,7 +8,7 @@ class PlatformSelector(QListWidget):
 
         self.setFixedSize(100,200)
         self.bangumiPlatforms = {}
-        with open(f"{PATH}/db/platforms.json","r",encoding="utf8") as f:
+        with open(f"{PATH}/src/db/platforms.json","r",encoding="utf8") as f:
             platforms = json.load(f)
         for platformKey,platform in platforms.items():
             self.bangumiPlatforms[platformKey] = {

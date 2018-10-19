@@ -58,7 +58,7 @@ class BangumiGeneralInfoEnterButton(QPushButton):
                 scheduleList = self.superEl.superEl.superEl.leftColumn.scheduleList
                 scheduleList.myCurrentItem.setText(bangumiChapters.title)
                 scheduleList.myCurrentItem.data = bangumiChapters
-                with open(f"{PATH}/db/bangumisInfo/{bangumiChapters.title}.json","w+",encoding="utf8") as f:
+                with open(f"{PATH}/src/db/bangumisInfo/{bangumiChapters.title}.json","w+",encoding="utf8") as f:
                     writeDict = bangumiChapters.makeDict()
                     json.dump(writeDict,f,ensure_ascii=False,cls=CJsonEncoder)
                 # print(self.superEl.superEl.superEl.leftColumn.scheduleList.myCurrentItem.text())

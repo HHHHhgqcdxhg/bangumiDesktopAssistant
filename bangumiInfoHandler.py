@@ -13,7 +13,7 @@ class BangumuInfo():
     def factory()->list:
         bangumiData = []
         bangumiChapters = []
-        dbPath = f"{PATH}/db/bangumisInfo"
+        dbPath = f"{PATH}/src/db/bangumisInfo"
         bangumiJsons = os.listdir(dbPath)
         for bangumiJsonFileName in bangumiJsons:
             with open(f"{dbPath}/{bangumiJsonFileName}", "r", encoding="utf8") as f:
