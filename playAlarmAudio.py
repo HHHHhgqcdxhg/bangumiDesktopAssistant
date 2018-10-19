@@ -1,5 +1,5 @@
-import wave
-import pyaudio
+# import wave
+# import pyaudio
 import winsound
 
 CHUNK = 1024
