@@ -35,7 +35,6 @@ class MainWindow(QWidget):
     def timer(self):
         self.now = datetime.datetime.now()
         self.timeNowLabel.setText(self.now.strftime("%H:%M:%S"))
-        print(self.contentHolder.content.nextDatetime)
         if self.contentHolder.content.nextDatetime - self.now <= time1seconds:
             self.contentHolder.content.findNext()
             self.nextLeaveTask = 1

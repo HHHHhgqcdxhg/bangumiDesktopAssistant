@@ -85,7 +85,6 @@ class BangumiChapters:
             updateDateTime = self.startUpdateDateTime
             chaptersCount = 0
             while self.finalUpdateDateTime >= updateDateTime >= self.startUpdateDateTime and chaptersCount <= 100:
-                chaptersCount += 1
 
                 chapterId = self.startChapter + chaptersCount
                 perchapterInfo = PerChapterInfo(bangumiTitle=self.title, updateTime=updateDateTime, chapterId=chapterId,
@@ -93,13 +92,14 @@ class BangumiChapters:
                 self.chapters.append(perchapterInfo)
 
                 updateDateTime += interval
+                chaptersCount += 1
 
         elif self.updateType == "monthly":
             updateDateTime = self.startUpdateDateTime
 
             chaptersCount = 0
             while self.finalUpdateDateTime >= updateDateTime >= self.startUpdateDateTime and chaptersCount <= 100:
-                chaptersCount += 1
+
                 updateTimeArr = updateDateTime.strftime("%Y-%m-%d %H:%M:%S").split("-")
                 m = int(updateTimeArr[1])
                 if not m == 12:
@@ -113,6 +113,7 @@ class BangumiChapters:
                 perchapterInfo = PerChapterInfo(bangumiTitle=self.title, updateTime=updateDateTime, chapterId=chapterId,
                                                 chapterName=f"第{chapterId}话",headImg=self.headImgSrc, title="")
                 self.chapters.append(perchapterInfo)
+                chaptersCount += 1
 
     def getChaptersStrs(self):
         self.chaptersStrs = [str(x) for x in self.chapters]
