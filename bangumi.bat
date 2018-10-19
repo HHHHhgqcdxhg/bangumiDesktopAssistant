@@ -1,3 +1,3 @@
 @echo off 
 
-start pythonw J:\projects\python_projects\bangumi\__main__.py
+start pythonw %~dp0\__main__.py
