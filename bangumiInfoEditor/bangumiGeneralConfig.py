@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog
-from .platformsEditor import PlatformsEditor
+from platformsEditor import PlatformsEditor
 from timeOpreat import weekDay2Str
-from .bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
-
+from bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
 class BangumiGeneralConfig(QFrame):
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '_instance'):
@@ -136,9 +135,14 @@ class BangumiGeneralConfig(QFrame):
         imgPath = QFileDialog.getOpenFileName(self,"选择图片","", "Image Files (*.jpg;*.png;*.jpeg)")[0]
         self.headImagePathDisableLabel.setText(imgPath)
 
-    def setData(self,data):
+    def lastSetPlatformData(self):
         if self.platformsEditor.platformSelector.myCurrentItem:
             self.data["platFormTargetUrls"][self.platformsEditor.platformSelector.myCurrentItem.key] = self.platformsEditor.urlEditor.toPlainText()
+            if self.platformsEditor.checkBox.isChecked():
+                self.data["platFormTargetUrls"]["default"] = self.platformsEditor.platformSelector.myCurrentItem.key
+
+    def setData(self,data):
+        self.lastSetPlatformData()
         if not type(data) == dict:
             self.data = data = data.__dict__
         else:
@@ -165,7 +169,9 @@ class BangumiGeneralConfig(QFrame):
                 # self.data["platFormTargetUrls"][self.platformsEditor.platformSelector.myCurrentItem.key] = self.platformsEditor.urlEditor.toPlainText()
                 self.platformsEditor.platformSelector.myCurrentItem.setSelected(False)
                 self.platformsEditor.platformSelector.myCurrentItem = None
+
             self.platformsEditor.urlEditor.setText("")
+            self.platformsEditor.checkBox.setCheckState(False)
         else:
             self.mainTitleEditor.setText("")
             self.headImagePathDisableLabel.setText("请选择64x64像素的jpg或png文件")
@@ -175,5 +181,6 @@ class BangumiGeneralConfig(QFrame):
             self.firstUpdateChapterEditor.setText("")
             self.updateDayEditor.setText("")
             self.updateDayEditor.setText("")
+            self.platformsEditor.checkBox.setCheckState(False)
             # print(self.updateTypeComboBox.currentText())
 

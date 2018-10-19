@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QListWidget,QScrollArea,QScrollBar,QListWidgetItem
 from PyQt5.QtCore import Qt
-from .bangumiData import bangumiData
+from bangumiData import bangumiData
 
-from .bangumiGeneralConfig import BangumiGeneralConfig
 
 class ScheduleList(QListWidget):
     def __init__(self,superEl):

@@ -24,10 +24,15 @@ class PlatformSelector(QListWidget):
     def clickPlatform(self, item):
         try:
             if self.myCurrentItem:
-                self.superEl.superEl.data["platFormTargetUrls"][self.myCurrentItem.key] = self.superEl.urlEditor.toPlainText()
+                self.superEl.superEl.lastSetPlatformData()
+                # self.superEl.superEl.data["platFormTargetUrls"][self.myCurrentItem.key] = self.superEl.urlEditor.toPlainText()
             self.myCurrentItem = item
 
             self.superEl.urlEditor.setText(self.superEl.superEl.data["platFormTargetUrls"][item.key])
+            if self.superEl.superEl.data["platFormTargetUrls"]["default"] == item.key:
+                self.superEl.checkBox.setCheckState(True)
+            else:
+                self.superEl.checkBox.setCheckState(False)
         except:
             self.superEl.urlEditor.setText("")
 

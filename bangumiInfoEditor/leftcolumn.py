@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton
 
-from .schedulelist import ScheduleList
-from .addschedulebutton import AddScheduleButton
+from schedulelist import ScheduleList
+from addschedulebutton import AddScheduleButton
 
 class LeftColumn(QFrame):
     def __init__(self,superEl):

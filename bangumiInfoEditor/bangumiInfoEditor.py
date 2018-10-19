@@ -1,4 +1,4 @@
-from .bangumiInfoEditorWindow import BangumiInfoEditorWindow
+from bangumiInfoEditorWindow import BangumiInfoEditorWindow
 from PyQt5.QtWidgets import QApplication
 import sys
 

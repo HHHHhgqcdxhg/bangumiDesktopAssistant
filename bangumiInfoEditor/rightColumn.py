@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton
 
-from .bangumiGeneralConfig import BangumiGeneralConfig
+from bangumiGeneralConfig import BangumiGeneralConfig
 
 class RightColumn(QFrame):
     def __init__(self,superEl):

@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QFrame, QLabel, QListWidget, QVBoxLayout, QPushButton, QGridLayout, QTextEdit, QComboBox,QMessageBox,QFileDialog
 from PyQt5.QtCore import Qt
 import datetime,json
-from .makeChaptersInfo import BangumiChapters
+from makeChaptersInfo import BangumiChapters
 from config import PATH
 class CJsonEncoder(json.JSONEncoder):
     def default(self, obj):
@@ -23,11 +23,7 @@ class BangumiGeneralInfoEnterButton(QPushButton):
     def mousePressEvent(self, e):
         if (e.button() == Qt.LeftButton):
             try:
-                if self.superEl.platformsEditor.platformSelector.myCurrentItem:
-                    c = self.superEl.platformsEditor.platformSelector.myCurrentItem
-                    d = self.superEl.data
-                    self.superEl.data["platFormTargetUrls"][self.superEl.platformsEditor.platformSelector.myCurrentItem.key] = self.superEl.platformsEditor.urlEditor.toPlainText()
-
+                self.superEl.lastSetPlatformData()
                 newData = {
                     "title": self.superEl.mainTitleEditor.toPlainText(),
 

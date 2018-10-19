@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import Qt
-from .schedulelist import ScheduleListItem
+from schedulelist import ScheduleListItem
 
 
 class AddScheduleButton(QPushButton):
