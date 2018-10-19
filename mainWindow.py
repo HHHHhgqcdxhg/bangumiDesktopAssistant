@@ -32,7 +32,6 @@ class MainWindow(QWidget):
         self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
         self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
 
-        self.audioThread = threading.Thread(target=playAlarmAudio.play)
     def timer(self):
         self.now = datetime.datetime.now()
         self.timeNowLabel.setText(self.now.strftime("%H:%M:%S"))
@@ -41,8 +40,8 @@ class MainWindow(QWidget):
             self.contentHolder.content.findNext()
             self.nextLeaveTask = 1
             self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
-            if not self.audioThread.isAlive():
-                self.audioThread.start()
+            audioThread = threading.Thread(target=playAlarmAudio.play)
+            audioThread.start()
 
         if not (self.now.hour or self.now.minute or self.now.second):
             self.timeTodayLabel.setTimeText()
