@@ -70,6 +70,8 @@ class BangumiGeneralInfoEnterButton(QPushButton):
                     QMessageBox.critical(self, "错误", "请添加图片")
                 elif stre == "noTitle":
                     QMessageBox.critical(self, "错误", "标题不可以为新添番剧!")
+                elif stre == "titleerror":
+                    QMessageBox.critical(self, "错误", "标题中不可以包含;.|*/:?\"<>!")
                 else:
                     QMessageBox.critical(self, "错误", "请正确填写且不能留空")
 

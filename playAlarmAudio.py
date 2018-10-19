@@ -2,7 +2,7 @@
 # import pyaudio
 import winsound
 
-CHUNK = 1024
+# CHUNK = 1024
 from config import PATH
 # def play():
 #     wf = wave.open(f"{PATH}/src/audio/alarm.wav", 'rb')

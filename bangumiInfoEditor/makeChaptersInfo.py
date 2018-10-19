@@ -1,4 +1,4 @@
-import datetime,json,time,os
+import datetime,json,time,os,re
 from PIL import Image
 from PyQt5.QtWidgets import QMessageBox
 from config import PATH
@@ -32,8 +32,11 @@ class PerChapterInfo:
 
 class BangumiChapters:
     def __init__(self, info):
-        if info["title"] == "新添番剧":
+        title = info["title"]
+        if not title or title == "新添番剧":
             raise Exception("noTitle")
+        elif re.search("(\;|\.|\||\*|/|:|\?|\"|<|>)",title):
+            raise Exception("titleerror")
         self.title = info["title"]
         self.currentPath = PATH
         if not "/" in info["headImgSrc"] and not "\\" in info["headImgSrc"]:
