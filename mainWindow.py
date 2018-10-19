@@ -9,6 +9,7 @@ from config import config
 from bangumiSystemTray import BangumiSystemTray
 import playAlarmAudio
 from timeOpreat import *
+import threading
 
 class MainWindow(QWidget):
     def __init__(self,app):
@@ -25,24 +26,23 @@ class MainWindow(QWidget):
         self.qTimer.timeout.connect(self.timer)
         self.qTimer.start(1000)
         self.entered = False
-        self.playingAudio = False
         self.nextLeaveTask = -1
 
         self.contentHolder.content.findNext()
         self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
         self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
 
+        self.audioThread = threading.Thread(target=playAlarmAudio.play)
     def timer(self):
         self.now = datetime.datetime.now()
         self.timeNowLabel.setText(self.now.strftime("%H:%M:%S"))
+        print(self.contentHolder.content.nextDatetime)
         if self.contentHolder.content.nextDatetime - self.now <= time1seconds:
             self.contentHolder.content.findNext()
             self.nextLeaveTask = 1
             self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
-            if not self.playingAudio:
-                self.playingAudio = True
-                playAlarmAudio.play()
-                self.playingAudio = False
+            if not self.audioThread.isAlive():
+                self.audioThread.start()
 
         if not (self.now.hour or self.now.minute or self.now.second):
             self.timeTodayLabel.setTimeText()
