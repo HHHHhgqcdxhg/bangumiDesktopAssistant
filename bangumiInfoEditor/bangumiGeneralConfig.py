@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QFrame,QLabel,QListWidget,QVBoxLayout,QPushButton,QGridLayout,QTextEdit,QComboBox,QFileDialog
-from timeOpreat import weekDay2Str
+from timeOperate import weekDay2Str
 from .bangumiGeneralInfoEnterButton import BangumiGeneralInfoEnterButton
 from .platformsEditor import PlatformsEditor
 class BangumiGeneralConfig(QFrame):

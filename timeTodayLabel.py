@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QLabel,QFrame
 from PyQt5.QtCore import Qt
 import datetime
-from timeOpreat import weekDay2Str
+from timeOperate import weekDay2Str
 from PyQt5.QtGui import QColor
 from config import config,changeMainWindowOffset
 

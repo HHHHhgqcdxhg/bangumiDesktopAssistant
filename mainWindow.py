@@ -8,7 +8,7 @@ from content import ContentHolder
 from config import config
 from bangumiSystemTray import BangumiSystemTray
 import playAlarmAudio
-from timeOpreat import *
+from timeOperate import *
 import threading
 
 class MainWindow(QWidget):

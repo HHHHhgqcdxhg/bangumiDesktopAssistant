@@ -7,7 +7,7 @@ from perBangumiEl import PerBangumi
 from bangumiInfoHandler import BangumuInfo
 from config import PATH
 
-from timeOpreat import time1Minutes,time1seconds
+from timeOperate import time1Minutes,time1seconds
 import datetime,sip
 class ContentHolder(QScrollArea):
     def __init__(self,superEl):
@@ -28,12 +28,12 @@ class ContentHolder(QScrollArea):
     #     self.scrollBar.valueChanged.connect(self.fff)
     # def fff(self):
     #     print(self.scrollBar.value())
-    def enterEvent(self, QEvent):
-        self.superEl.entered = True
-        self.active()
-    def leaveEvent(self, QEvent):
-        self.superEl.entered = False
-        self.disActive()
+    # def enterEvent(self, QEvent):
+    #     self.superEl.entered = True
+    #     self.active()
+    # def leaveEvent(self, QEvent):
+    #     self.superEl.entered = False
+    #     self.disActive()
 
     def active(self):
         self.content.setStyleSheet(f"background-color: {config.colors.contentDisplayBg}")

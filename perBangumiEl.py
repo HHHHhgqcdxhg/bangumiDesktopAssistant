@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap, QIcon
 import datetime
 import webbrowser
-from timeOpreat import time1Days, weekDay2Str, time7Days, timeZero, time14Days
+from timeOperate import time1Days, weekDay2Str, time7Days, timeZero, time14Days
 from config import PATH
 import perPlatform
 

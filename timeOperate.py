@@ -56,6 +56,21 @@ def weekDay2Str(weekday):
     if weekday == 6:
         return "周日"
 
+def weekdayStr2Weekday(s)->int:
+    if s == "周一":
+        return 0
+    if s == "周二":
+        return 1
+    if s == "周三":
+        return 2
+    if s == "周四":
+        return 3
+    if s == "周五":
+        return 4
+    if s == "周六":
+        return 5
+    if s == "周日":
+        return 6
 
 if __name__ == '__main__':
     weekDay2Str()

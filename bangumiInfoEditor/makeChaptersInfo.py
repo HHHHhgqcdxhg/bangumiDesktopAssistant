@@ -2,6 +2,7 @@ import datetime,json,time,os,re
 from PIL import Image
 from PyQt5.QtWidgets import QMessageBox
 from config import PATH
+from timeOperate import weekdayStr2Weekday
 class PerChapterInfo:
     def __init__(self, bangumiTitle, updateTime: datetime.datetime, chapterId,headImg:str, chapterName="", title=""):
         self.bangumiTitle = bangumiTitle
@@ -85,7 +86,12 @@ class BangumiChapters:
         self.chapters = []
         if self.updateType == "weekly":
             interval = datetime.timedelta(days=7)
-            updateDateTime = self.startUpdateDateTime
+            # updateDateTime = self.startUpdateDateTime
+
+            lastDays = weekdayStr2Weekday(self.updateDay) - self.startUpdateDateTime.weekday()
+            lastDays = lastDays if lastDays >=0 else 7 + lastDays
+            self.realStartUpdateDatetime = self.startUpdateDateTime + datetime.timedelta(days=lastDays)
+            updateDateTime = self.realStartUpdateDatetime
             chaptersCount = 0
             while self.finalUpdateDateTime >= updateDateTime >= self.startUpdateDateTime and chaptersCount <= 100:
 
