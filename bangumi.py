@@ -6,7 +6,7 @@ from bangumiInfoEditor import BangumiInfoEditorWindow
 def bangumi():
     app = QApplication(sys.argv)
     mainWindow = MainWindow(app)
-    bangumiInfoEditorWindow = BangumiInfoEditorWindow()
+    bangumiInfoEditorWindow = BangumiInfoEditorWindow(mainWindow)
     mainWindow.show()
 
     app.setQuitOnLastWindowClosed(False)

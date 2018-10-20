@@ -8,7 +8,7 @@ from bangumiInfoHandler import BangumuInfo
 from config import PATH
 
 from timeOpreat import time1Minutes,time1seconds
-import datetime
+import datetime,sip
 class ContentHolder(QScrollArea):
     def __init__(self,superEl):
         self.superEl = superEl
@@ -64,22 +64,40 @@ class Content(QFrame):
         self.setStyleSheet(f"background-color: {config.colors.contentBg}")
 
         self.mainLayout = QVBoxLayout()
-
-
-        self.bangumiChapters = BangumuInfo.factory()
-
         self.nextDatetime = None
         self.nextIndex = 0
+
+        self.bangumiChaptersEls = []
+        self.setChildren()
+
+
+    def setChildren(self):
+        self.bangumiChapters = BangumuInfo.factory()
         for bangumiChapter in self.bangumiChapters:
             p = PerBangumi(bangumiChapter)
+            self.bangumiChaptersEls.append(p)
             self.mainLayout.addWidget(p)
         self.setLayout(self.mainLayout)
-
         self.findNext()
+
+    def removeChildren(self):
+        for bangumiChapterEl in self.bangumiChaptersEls:
+            # self.mainLayout.removeItem(bangumiChapterEl)
+            self.mainLayout.removeWidget(bangumiChapterEl)
+            sip.delete(bangumiChapterEl)
+        self.bangumiChaptersEls = []
+
+    def reloadChildren(self):
+        self.removeChildren()
+        self.setChildren()
+        self.findNext()
+        self.superEl.superEl.needSetScrollBarValue = self.nextIndex - 1
+        self.superEl.setScrollBarValue(self.superEl.superEl.needSetScrollBarValue)
+
 
     def findNext(self):
         now = datetime.datetime.now()
-        for x in range(self.nextIndex,self.bangumiChapters.__len__()):
+        for x in range(self.bangumiChapters.__len__()):
             if self.bangumiChapters[x].updateTime - now >= time1seconds:
                 self.nextDatetime = self.bangumiChapters[x].updateTime
                 self.nextIndex = x

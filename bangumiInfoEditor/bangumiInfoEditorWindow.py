@@ -5,7 +5,8 @@ from PyQt5.QtGui import QIcon
 from config import PATH
 import ctypes
 class BangumiInfoEditorWindow(QWidget):
-    def __init__(self):
+    def __init__(self,mainWindow=""):
+        self.mainWindow = mainWindow
         super(BangumiInfoEditorWindow, self).__init__()
         self.setWindowTitle("追番编辑")
         self.setWindowIcon(QIcon(f"{PATH}/src/img/icon/icon.ico"))

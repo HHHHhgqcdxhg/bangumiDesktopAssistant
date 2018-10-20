@@ -2,8 +2,8 @@ from .bangumiInfoEditorWindow import BangumiInfoEditorWindow
 from PyQt5.QtWidgets import QApplication
 import sys
 
-def showWindow():
-    bangumiEditorWindow = BangumiInfoEditorWindow()
+def showWindow(mainwindow = ""):
+    bangumiEditorWindow = BangumiInfoEditorWindow(mainwindow)
     bangumiEditorWindow.show()
 
 

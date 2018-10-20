@@ -62,8 +62,13 @@ class BangumiGeneralInfoEnterButton(QPushButton):
                     writeDict = bangumiChapters.makeDict()
                     json.dump(writeDict,f,ensure_ascii=False,cls=CJsonEncoder)
                 # print(self.superEl.superEl.superEl.leftColumn.scheduleList.myCurrentItem.text())
+                # self->generalconfig->RightColumn->BangumiInfoEditorWindow
+                try:
+                    self.superEl.superEl.superEl.mainWindow.contentHolder.content.reloadChildren()
 
-                QMessageBox.about(self, "设置成功!", "设置成功!\n请重启桌面挂件以应用设置!")
+                except:
+                    pass
+                QMessageBox.about(self, "设置成功!", "设置成功!")
             except Exception as e:
                 stre = str(e)
                 if stre == "noImage":

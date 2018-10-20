@@ -16,7 +16,7 @@ class MainWindow(QWidget):
         super(MainWindow, self).__init__()
         self.app = app
         self.move(config.mainWindowOffset[0],config.mainWindowOffset[1])
-        self.initSystemTray()
+
         self.setMouseTracking(True)
         self.leftButtonOn = False
         self.initUI()
@@ -28,9 +28,9 @@ class MainWindow(QWidget):
         self.entered = False
         self.nextLeaveTask = -1
 
-        self.contentHolder.content.findNext()
         self.needSetScrollBarValue = self.contentHolder.content.nextIndex - 1
         self.contentHolder.setScrollBarValue(self.needSetScrollBarValue)
+        self.initSystemTray()
 
     def timer(self):
         self.now = datetime.datetime.now()
