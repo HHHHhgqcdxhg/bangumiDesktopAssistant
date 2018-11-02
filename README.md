@@ -17,7 +17,7 @@
 
 可在注册表中将bangumi.exe设为开机自启  
 
-#### 运行截图  
+### 运行截图  
 1080p屏幕下unfocused状态表现:  
 <a href="http://hhhhhg.coding.me/bangumiDesktopAssistant/src/img/readmeImg/1080pUnfocused.png" target="_blank">
 <img src="http://hhhhhg.coding.me/bangumiDesktopAssistant/src/img/readmeImg/1080pUnfocused.png" width="200px" style="float:left"/>
