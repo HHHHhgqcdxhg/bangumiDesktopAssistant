@@ -1,4 +1,7 @@
-from __init__ import bangumi
-
 if __name__ == '__main__':
-    bangumi()
+    try:
+        from __init__ import bangumi
+        bangumi()
+    except Exception as e:
+        print(str(e))
+        a = input("输入任意值后回车关闭 : ")
