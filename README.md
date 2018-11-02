@@ -1,7 +1,7 @@
 本项目git仓库:https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant  
 
 该分支为dist分支,适合没有python基础的同学下载运行.  
-另有[develop分支](https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant/git/tree/develop),无内置python环境,无可执行exe.适合有python环境的同学clone来,用自己的python环境来运行本工具.  
+另有<a href="https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant/git/tree/develop" target="_blank">develop分支</a>,无内置python环境,无可执行exe.适合有python环境的同学clone来,用自己的python环境来运行本工具.  
 
 
 ### 安装
