@@ -1,6 +1,9 @@
 本项目git仓库:https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant  
-尝试了打包成exe却做不到,所以应该只有装了python才能用了XD  
-python版本是3.6.4(因为用到了[f前缀字符串](https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals),所以大概需要至少3.6版本),操作系统只试了windows  
+
+该分支为[develop](#)分支,无内置python环境,无可执行exe.适合有python环境的同学clone来,用自己的python环境来运行本工具.
+另有[dist](#)分支,适合没有python基础的同学下载运行.
+
+python版本是3.6.4(因为用到了[f前缀字符串](https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals),所以大概需要至少3.6版本),操作系统只试了windows.  
 
 使用:
 ```
@@ -31,4 +34,4 @@ python __main__.py
 <!--4k屏幕下focused状态(鼠标悬停在之上)表现:-->
 <!--![4kFocused.png](http://hhhhhg.coding.me/bangumiDesktopAssistant/src/img/readmeImg/4kFocused.png)  -->
 之前用tkinter写了两天了,察觉有点不好用,又换成了PyQt5.  
-耗资源方面,平常在后台运行就占用十几二十M内存
+耗资源方面,平常在后台运行就占用十几二十M内存    
