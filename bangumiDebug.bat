@@ -34,3 +34,4 @@
 @echo off
 
 start %~dp0\pyenv\Scripts\python %~dp0\__main__.py
+pause
