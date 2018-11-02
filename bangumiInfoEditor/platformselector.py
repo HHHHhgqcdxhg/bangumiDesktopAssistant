@@ -19,8 +19,6 @@ class PlatformSelector(QListWidget):
         self.itemClicked.connect(self.clickPlatform)
         self.myCurrentItem = None
 
-
-
     def clickPlatform(self, item):
         try:
             if self.myCurrentItem:
