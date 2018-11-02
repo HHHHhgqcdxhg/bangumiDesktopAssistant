@@ -1,7 +1,7 @@
 本项目git仓库:https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant  
 
-该分支为[develop](#)分支,无内置python环境,无可执行exe.适合有python环境的同学clone来,用自己的python环境来运行本工具.
-另有[dist](#)分支,适合没有python基础的同学下载运行.
+该分支为develop分支,无内置python环境,无可执行exe.适合有python环境的同学clone来,用自己的python环境来运行本工具.  
+另有[dist](https://dev.tencent.com/u/hhhhhg/p/bangumiDesktopAssistant/git/tree/dist)分支,适合没有python基础的同学下载运行.
 
 python版本是3.6.4(因为用到了[f前缀字符串](https://docs.python.org/3/whatsnew/3.6.html#pep-498-formatted-string-literals),所以大概需要至少3.6版本),操作系统只试了windows.  
 
